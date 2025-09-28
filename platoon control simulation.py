@@ -158,7 +158,7 @@ class Car:
         relative_distance = leader_distance - self.distance_travelled
         relative_speed = self.velocity - leader_velocity
         b = np.abs(self.min_acceleration)
-        de = self.desired_distance + max(0.0, self.velocity * self.reaction_time +
+        de = self.desired_distance + max(0.0, self.velocity * self.desired_headway +
                                          (self.velocity * relative_speed) / (2.0 * np.sqrt(self.max_acceleration * b)))
         acceleration = self.max_acceleration * (1 - (self.velocity / self.max_velocity) ** delta - (de / relative_distance) ** 2)
         acceleration = np.clip(acceleration, self.min_acceleration, self.max_acceleration)
